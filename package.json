@@ -1,0 +1,32 @@
+{
+  "name": "complete_react",
+  "version": "1.0.0",
+  "description": "This React basic to advance",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sattu2007/React_basic_To_Advance.git"
+  },
+  "keywords": [
+    "Ract"
+  ],
+  "author": "Satyam Tiwari",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sattu2007/React_basic_To_Advance/issues"
+  },
+  "homepage": "https://github.com/sattu2007/React_basic_To_Advance#readme",
+  "devDependencies": {
+    "parcel": "^2.12.0",
+    "process": "^0.11.10"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "brawserslist": [
+    "last 2 version"
+  ]
+}
