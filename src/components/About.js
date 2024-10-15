@@ -7,21 +7,21 @@ class About extends React.Component{
 
     constructor(props){
         super(props);
-        console.log("parent constracter");
+       // console.log("parent constracter");
     }
 
 
     componentDidMount(){
-        console.log("parent component did mount");
+       // console.log("parent component did mount");
     }
 
     render(){
-        console.log("parent render");
+        //console.log("parent render");
         return(
             <div>
                 <h1>About</h1>
                 <h2>Radhe Radhe</h2>
-                <UserClass name ={"Satyam Tiwari (class)"} location ={"Punjab (class)"}/>
+                <UserClass name ={"First (class)"} location ={"Punjab (class)"}/>
             </div>
         )
     }
