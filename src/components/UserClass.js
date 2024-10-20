@@ -10,7 +10,7 @@ class UserClass extends React.Component{
             }
             
         }
-        console.log(this.props.name+"child constracter");
+         console.log(this.props.name+"child constracter");
     
     }
 

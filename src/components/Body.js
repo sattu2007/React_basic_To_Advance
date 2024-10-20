@@ -5,7 +5,7 @@ import useOfflineStatus from "../utils/useOfflineStatus";
 import { Link } from "react-router-dom";
 const Body = ()=>{
      //State Variable- Super poweful Variable
-      
+
      const [listOfRestaurants, setListOfRestaurant] = useState([]);
      const [filterdRestaurant,setFilterdRestaurant] = useState([])
      const [searchText,setSearchText] = useState("");
@@ -23,7 +23,7 @@ const Body = ()=>{
           setListOfRestaurant(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
           setFilterdRestaurant(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
      }
-     
+
      const onlineStatus = useOfflineStatus();
      console.log(onlineStatus);
      if(onlineStatus === false) {
@@ -32,32 +32,34 @@ const Body = ()=>{
                 <h1>Connection Error</h1>
                 <h3>Please check your internet connection and try again!!!</h3>
                </>
-          
-          );
-          
-     }
 
+          );
+
+     }
 
      return listOfRestaurants.length ===0 ? <Shimmer/> : (
          <div className="body">
-              <div className="filter">
-               <div className="search">
-                  <input type="text" className="search-box"  value={searchText} onChange ={(e) =>{
+              <div className="filter flex">
+               <div className="search m-4 p-4">
+                  <input type="text" className=" border border-solid border-black"  value={searchText} onChange ={(e) =>{
                     setSearchText(e.target.value);
                   }}/>  
-                  <button onClick={() =>{
+                  <button className="px-4 py-2 bg-green-100 m-4 rounded-lg" onClick={() =>{
                     const filterRestaurant = listOfRestaurants.filter((res)=> res.info.name.toLowerCase().includes(searchText.toLowerCase()));
                     setFilterdRestaurant(filterRestaurant);
                   }}>Search</button> 
                </div>
-                <button className="filter-btn" onClick={() =>{
+               <div className="m-4 p-4 flex items-center ">
+               <button className="px-4 py-2 bg-gray-100 rounded-lg" onClick={() =>{
                    const filteredList = listOfRestaurants.filter(
                     (res) => res.info.avgRating > 4.4
                    );
                    setListOfRestaurant(filteredList);
                 }} >Top Rated Restaurant</button>
+               </div>
+                
               </div>
-              <div className="res-container">
+              <div className="res-container flex flex-wrap">
                    {
                         filterdRestaurant.map((restaurant) => (
                         <Link key={restaurant.info.id} to ={"/restaurants/"+restaurant.info.id}><RestaurantCard  resData={restaurant}/></Link>
