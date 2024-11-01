@@ -9,6 +9,8 @@ const Body = ()=>{
      const [listOfRestaurants, setListOfRestaurant] = useState([]);
      const [filterdRestaurant,setFilterdRestaurant] = useState([])
      const [searchText,setSearchText] = useState("");
+
+     
      useEffect(()=>{
          fetchData();
      }, [])
@@ -20,8 +22,8 @@ const Body = ()=>{
 
           const json = await data.json();
           console.log(json);
-          setListOfRestaurant(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-          setFilterdRestaurant(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+          setListOfRestaurant(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+          setFilterdRestaurant(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
      }
 
      const onlineStatus = useOfflineStatus();
@@ -62,7 +64,9 @@ const Body = ()=>{
               <div className="res-container flex flex-wrap">
                    {
                         filterdRestaurant.map((restaurant) => (
-                        <Link key={restaurant.info.id} to ={"/restaurants/"+restaurant.info.id}><RestaurantCard  resData={restaurant}/></Link>
+                        <Link key={restaurant.info.id} to ={"/restaurants/"+restaurant.info.id}>
+                         <RestaurantCard  resData={restaurant}/>
+                         </Link>
 
                          ))
                    }
