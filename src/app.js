@@ -1,5 +1,5 @@
 // ====Nested ==
-import { lazy,Suspense } from "react";
+import { lazy,Suspense, useEffect, useState } from "react";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
@@ -9,18 +9,37 @@ import About from "./components/About";
 import Contact from "./components/Contact";
 import Error from "./components/Error";
 import RestaurantMenu from "./components/RestaurantMenu";
-//import Grocery from "./components/Grocery";
+import UserContext from "./utils/UserContext";
+import { Provider } from "react-redux";
+import appStroe from "./utils/appStore";
+
 
 const Grocery = lazy(() => import("./components/Grocery"));
 
 
 
 const AppLayout =  () =>{
+   const [userName, setUserName] = useState();
+   
+
+   useEffect(() =>{
+     const data = {
+          name: "Radhe Radhe",
+     }
+     setUserName(data.name);
+   }, []);
+
      return (
-          <div className="app">
+
+          <Provider store={appStroe}>
+          <UserContext.Provider value={{LoggedInUeser: userName, setUserName}}>
+               <div className="app">
                <Header/>
                <Outlet/>  
-          </div>
+                </div>
+          </UserContext.Provider>
+          </Provider>
+          
      )
 }
 

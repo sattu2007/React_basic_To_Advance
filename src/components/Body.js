@@ -1,15 +1,15 @@
 import RestaurantCard from "./RestaurantCard";
-import {useState,useEffect} from "react";
+import {useState,useEffect, useContext} from "react";
 import Shimmer from "./Shimmer";
 import useOfflineStatus from "../utils/useOfflineStatus";
 import { Link } from "react-router-dom";
+import UserContext from "../utils/UserContext";
 const Body = ()=>{
      //State Variable- Super poweful Variable
 
      const [listOfRestaurants, setListOfRestaurant] = useState([]);
      const [filterdRestaurant,setFilterdRestaurant] = useState([])
      const [searchText,setSearchText] = useState("");
-
      
      useEffect(()=>{
          fetchData();
@@ -22,8 +22,8 @@ const Body = ()=>{
 
           const json = await data.json();
           console.log(json);
-          setListOfRestaurant(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-          setFilterdRestaurant(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+          setListOfRestaurant(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+          setFilterdRestaurant(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
      }
 
      const onlineStatus = useOfflineStatus();
@@ -38,6 +38,8 @@ const Body = ()=>{
           );
 
      }
+
+     const {LoggedInUeser, setUserName} = useContext(UserContext);
 
      return listOfRestaurants.length ===0 ? <Shimmer/> : (
          <div className="body">
@@ -58,6 +60,15 @@ const Body = ()=>{
                    );
                    setListOfRestaurant(filteredList);
                 }} >Top Rated Restaurant</button>
+               </div>
+               <div className="m-4 p-4 flex items-center ">
+                    <label>UeseName: </label>
+             <input  className="border border-black p-2"
+             value ={LoggedInUeser} 
+             onChange={(e) =>
+               setUserName(e.target.value)
+     }/>
+                  
                </div>
                 
               </div>
