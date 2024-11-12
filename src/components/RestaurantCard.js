@@ -10,9 +10,9 @@ const RestaurantCard = ({resData}) =>{
 //     console.log(LoggedInUeser);
 
      return(
-          <div className="res-card m-4 p-4 w-[250px] rounded-lg bg-gray-100 hover:bg-gray-400"> 
+          <div className="res-card m-4 p-4 w-[250px] h-[450px] rounded-lg bg-gray-100 hover:bg-gray-400 h-200"> 
                <img 
-               className="rounded-lg"
+               className="rounded-lg h-56 w-60"
                alt="res-logo"
                src={CDN_URL+ 
                     cloudinaryImageId}
@@ -22,7 +22,7 @@ const RestaurantCard = ({resData}) =>{
                <h4>{avgRating} star</h4> 
                <h4>{costForTwo}</h4>
                <h4>{areaName}</h4>
-               <h4>{LoggedInUeser}</h4>
+               <h4>{LoggedInUeser}</h4> 
 
           </div>
      );

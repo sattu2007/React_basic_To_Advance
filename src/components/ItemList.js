@@ -8,9 +8,10 @@ const ItemList = ({items}) =>{
     const dispatch = useDispatch();
 
 
-    // const handalAddItem = () =>{
-    //     dispatch(addItem("Pzza"));
-    // };
+    const handalAddItem = (item) =>{
+        dispatch(addItem(item));
+    };
+    
     return (
            <div>
              {items.map((item) =>(
@@ -26,10 +27,7 @@ const ItemList = ({items}) =>{
 
                    <div className="absolute">
                    <button className="p-2 mx-16 rounded-lg bg-black text-white shadow-lg "
-                   onClick={() =>{
-                    dispatch(addItem("pzza"));
-                    console.log("Radhe Radhe");
-                   }}
+                   onClick={() =>handalAddItem(item)}
                    >
                     Add +</button>
                    </div>
