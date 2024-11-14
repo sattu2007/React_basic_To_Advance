@@ -10,7 +10,7 @@ const RestaurantCard = ({resData}) =>{
 //     console.log(LoggedInUeser);
 
      return(
-          <div className="res-card m-4 p-4 w-[250px] h-[450px] rounded-lg bg-gray-100 hover:bg-gray-400 h-200"> 
+          <div className="res-card m-4 p-4 w-[220px] h-[450px] rounded-lg bg-gray-100 hover:bg-gray-400 h-200"> 
                <img 
                className="rounded-lg h-56 w-60"
                alt="res-logo"
